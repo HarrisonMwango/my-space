@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #020617, #0f172a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e5e7eb;
+}
+
+.register-box {
+    width: 420px;
+    background: #020617;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: none;
+    margin-bottom: 15px;
+}
+
+.form-group.active {
+    display: block;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Centered buttons */
+.center-btn {
+    width: 160px;
+    display: block;
+    margin: 14px auto 0;
+    padding: 9px;
+    border: none;
+    border-radius: 5px;
+    background: #2563eb;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.center-btn:hover {
+    background: #1d4ed8;
+}
+
+.verify-btn {
+    background: #16a34a;
+}
+
+.verify-btn:hover {
+    background: #15803d;
+}
+
+.finish-btn {
+    width: 200px;
+}
+
+/* Password field */
+.password-field {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.password-field input {
+    padding-right: 40px;
+}
+
+.password-field .eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Password rules */
+.rules {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 12px;
+    font-size: 13px;
+}
+
+.rules li {
+    color: #fca5a5;
+    margin-bottom: 4px;
+}
+
+.rules li.valid {
+    color: #22c55e;
+}
+
+.success {
+    text-align: center;
+    color: #22c55e;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+button:disabled {
+    background: #374151;
+    cursor: not-allowed;
+}

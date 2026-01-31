@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MySpace | Forgot Password</title>
+    <link rel="stylesheet" href="forgotpwd.css">
+</head>
+<body>
+
+<div class="reset-box">
+    <h2>Forgot Password</h2>
+    <p>Enter your email and we’ll send you a password reset link.</p>
+
+    <label>Email Address</label>
+    <input type="email" id="email" placeholder="you@example.com">
+
+    <button onclick="sendResetLink()">Send Reset Link</button>
+</div>
+
+<script>
+    function sendResetLink() {
+        const email = document.getElementById("email").value;
+
+        if (!email) {
+            alert("Please enter your email");
+            return;
+        }
+
+        // Backend will send email here
+        alert("Password reset link sent! Check your email.");
+
+        // Optional: redirect to login
+        // window.location.href = "login.html";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MySpace | Register</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+
+<div class="register-box">
+    <h2>Create Your MySpace Account</h2>
+
+    <div class="success" id="successMsg">
+        ✔ Email verified successfully
+    </div>
+
+    <!-- STEP 1: EMAIL -->
+    <div class="form-group active" id="emailStep">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com">
+
+        <button class="center-btn" onclick="sendOTP()">Get OTP</button>
+    </div>
+
+    <!-- STEP 2: OTP -->
+    <div class="form-group" id="otpStep">
+        <label>Enter OTP</label>
+        <input type="text" id="otp" placeholder="Enter the OTP sent to your email">
+
+        <button class="center-btn verify-btn" onclick="verifyOTP()">Verify Email</button>
+    </div>
+
+    <!-- STEP 3: ACCOUNT DETAILS -->
+    <div class="form-group" id="accountStep">
+        <label>Username</label>
+        <input type="text" id="username" placeholder="Choose a username">
+
+        <label>Password</label>
+        <div class="password-field">
+            <input type="password" id="password"
+                   placeholder="Create a password"
+                   onkeyup="checkPasswordRules()">
+            <span class="eye" onclick="togglePassword('password')">👁</span>
+        </div>
+
+        <!-- Password rules -->
+        <ul class="rules">
+            <li id="lenRule">❌ At least 6 characters</li>
+            <li id="letterRule">❌ Contains letters</li>
+            <li id="numberRule">❌ Contains numbers</li>
+        </ul>
+
+        <label>Confirm Password</label>
+        <div class="password-field">
+            <input type="password" id="confirmPassword"
+                   placeholder="Re-enter password"
+                   onkeyup="checkPasswordRules()">
+            <span class="eye" onclick="togglePassword('confirmPassword')">👁</span>
+        </div>
+
+        <button class="center-btn finish-btn"
+                id="finishBtn"
+                onclick="finishSetup()"
+                disabled>
+            Finish Account Setup
+        </button>
+    </div>
+</div>
+
+<script>
+    function sendOTP() {
+        const email = document.getElementById("email").value;
+        if (!email) {
+            alert("Please enter your email address");
+            return;
+        }
+        document.getElementById("emailStep").classList.remove("active");
+        document.getElementById("otpStep").classList.add("active");
+    }
+
+    function verifyOTP() {
+        const otp = document.getElementById("otp").value;
+        if (!otp) {
+            alert("Please enter the OTP");
+            return;
+        }
+        document.getElementById("otpStep").classList.remove("active");
+        document.getElementById("successMsg").style.display = "block";
+        document.getElementById("accountStep").classList.add("active");
+    }
+
+    function togglePassword(id) {
+        const field = document.getElementById(id);
+        field.type = field.type === "password" ? "text" : "password";
+    }
+
+    function checkPasswordRules() {
+        const password = document.getElementById("password").value;
+        const confirm = document.getElementById("confirmPassword").value;
+
+        const lengthOK = password.length >= 6;
+        const letterOK = /[a-zA-Z]/.test(password);
+        const numberOK = /[0-9]/.test(password);
+
+        updateRule("lenRule", lengthOK);
+        updateRule("letterRule", letterOK);
+        updateRule("numberRule", numberOK);
+
+        const allGood = lengthOK && letterOK && numberOK && password === confirm;
+
+        document.getElementById("finishBtn").disabled = !allGood;
+    }
+
+    function updateRule(id, valid) {
+        const rule = document.getElementById(id);
+        rule.textContent = (valid ? "✔ " : "❌ ") + rule.textContent.slice(2);
+        rule.className = valid ? "valid" : "";
+    }
+
+    function finishSetup() {
+        alert("Account setup complete! (backend will finalize)");
+    }
+</script>
+
+</body>
+</html>
