@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: index.html");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +25,12 @@
         <a href="music.html">Music</a>
         <a href="docs.html">Documents</a>
         <a href="images.html">Images</a>
-        <a href="index.html">Logout</a>
+        <button id="logoutBtn">Logout</button>
     </div>
 
     <!-- Developer button at the bottom -->
     <div class="sidebar-bottom">
-        <a href="https://harrisonmwango.github.io/My-portfolio/" class="developer-btn">👨‍💻 Developer</a>
+        <a href="https://harrisonmwango.github.io/My-portfolio/" target="php_blank" class="developer-btn">👨‍💻 Developer</a>
     </div>
 </div>
 
